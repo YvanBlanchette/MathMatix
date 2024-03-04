@@ -7,7 +7,6 @@ import { db } from '../database/userDataDB';
 
 function CreateUser() {
 	const [userName, setUserName] = useState('');
-	const [email, setEmail] = useState('');
 	const [profileImg, setProfileImg] = useState(null);
 	const [selectedOperations, setSelectedOperations] = useState(['multiplications', 'divisions']);
 	const [selectedProblemCount, setSelectedProblemCount] = useState('30');
@@ -17,7 +16,6 @@ function CreateUser() {
 	const addUserToDB = async () => {
 		const newUser = {
 			userName,
-			email,
 			profileImg,
 			operations: selectedOperations,
 			problemCount: selectedProblemCount,
@@ -37,7 +35,6 @@ function CreateUser() {
 		addUserToDB();
 		// Reset form fields
 		setUserName('');
-		setEmail('');
 		setProfileImg(null);
 		setSelectedOperations([]);
 		setSelectedProblemCount('');
@@ -87,8 +84,8 @@ function CreateUser() {
 	return (
 		<main id='createUser' className='pt-3 pb-5'>
 			<form onSubmit={handleSubmit}>
-				<fieldset className='mb-3'>
-					<legend>Infos Utilisateur</legend>
+				<div className='p-3'>
+					<h3 className='text-center mb-3'>Nouvel utilisateur</h3>
 
 					{/* Username Input */}
 					<label htmlFor='userName' className='form-label'>
@@ -105,21 +102,6 @@ function CreateUser() {
 						required
 					/>
 
-					{/* Email input */}
-					<label htmlFor='email' className='form-label'>
-						Courriel <span className='text-danger'>*</span>
-					</label>
-					<input
-						type='email'
-						className='form-control mb-3'
-						id='email'
-						name='email'
-						placeholder='Écris ton courriel ici...'
-						value={email}
-						onChange={(e) => setEmail(e.target.value)}
-						required
-					/>
-
 					{/* Profile picture input */}
 					<div className='mb-3'>
 						<label htmlFor='profileImg' className='form-label'>
@@ -127,10 +109,10 @@ function CreateUser() {
 						</label>
 						<input className='form-control form-control-sm' id='profileImg' type='file' onChange={(e) => setProfileImg(e.target.files[0])} />
 					</div>
-				</fieldset>
+				</div>
 
-				<fieldset className='mb-3'>
-					<legend>Configurations par défaut</legend>
+				<div className='p-3'>
+					<h3 className='text-center mb-3 '>Configurations par défaut</h3>
 					{/* Operations select */}
 					<div className='row mt-4'>
 						<div className='col'>
@@ -144,9 +126,9 @@ function CreateUser() {
 					</div>
 					{/* Tables select */}
 					<TablesSelect selectedTables={selectedTables} handleTablesChange={handleTablesChange} />
-				</fieldset>
-				<div className='text-center mt-4'>
-					<input className='btn btn-lg btn-green' type='submit' value='Submit' />
+				</div>
+				<div className='text-center mt-3'>
+					<input className='btn btn-lg btn-green' type='submit' value="Créer l'utilisateur" />
 				</div>
 			</form>
 		</main>
