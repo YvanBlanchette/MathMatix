@@ -10,7 +10,7 @@ import Quiz from './routes/quiz';
 import Results from './routes/results';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import './css/index.css';
+import './main.css';
 
 const router = createBrowserRouter([
 	{

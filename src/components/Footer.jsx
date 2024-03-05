@@ -1,4 +1,6 @@
 const Footer = () => {
+	const year = new Date().getFullYear();
+
 	return (
 		<footer className='d-flex flex-column justify-content-center align-items-center'>
 			<small>
@@ -7,7 +9,7 @@ const Footer = () => {
 					Yvan jr Blanchette
 				</a>
 			</small>
-			<small>Copyright &copy; 2024</small>
+			<small>Copyright &copy; {year}</small>
 		</footer>
 	);
 };
